@@ -1,0 +1,9 @@
+/*Run LDA w unequal priors*/
+title "Linear Discriminate Analysis - Wisconsin Cancer Cells Diagnostic Data Set (Standardized) w/Unequal Priors";
+proc discrim data = CancerDataPrinComp pool=test crossvalidate testdata=STDCancerData testout=a;
+class diagnosis;
+var radius_mean area_mean smoothness_worst compactness_se concavity_mean concave_points_worst symmetry_se fractal_dimension_mean texture_worst fractal_dimension_worst perimeter_se;
+priors "B"=.63 "M"=.37;
+run;
+proc print;
+run;
